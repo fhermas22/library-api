@@ -11,8 +11,9 @@ class Category extends Model
 
     protected $fillable = ['name'];
 
-    public function book()
+    // Many-to-many relationship with Book via pivot table 'book_category'
+    public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->belongsToMany(Book::class, 'book_category');
     }
 }
