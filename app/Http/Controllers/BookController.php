@@ -45,10 +45,10 @@ class BookController extends Controller
     /**
      * Display the specified book.
      */
-    public function show(Book $book)
+    public function show($id)
     {
         // Search specified book in storage
-        $book = Book::findOrFail($book);
+        $book = Book::findOrFail($id);
 
         // Response
         return response()->json(
@@ -60,10 +60,10 @@ class BookController extends Controller
     /**
      * Update the specified book in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
         // Search specified book
-        $book = Book::findOrFail($book);
+        $book = Book::findOrFail($id);
 
         // Modify & Save specified book
         $book->update(
@@ -80,10 +80,10 @@ class BookController extends Controller
     /**
      * Remove the specified book from storage.
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
         // Search specified book
-        $book = Book::findOrFail($book);
+        $book = Book::findOrFail($id);
 
         // Delete a specified book
         $book->delete();

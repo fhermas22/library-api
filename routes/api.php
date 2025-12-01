@@ -8,3 +8,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/register', 'register');
     Route::middleware('auth:sanctum')->post('/logout', 'logout');
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/books', App\Http\Controllers\BookController::class);
+});
