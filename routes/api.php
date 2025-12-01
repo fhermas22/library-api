@@ -15,6 +15,7 @@ Route::controller(UserController::class)->group(function () {
 // Protected Routes
 Route::middleware('auth:sanctum')->group(function () {
     // Book Routes
+    Route::get('/books/search', [BookController::class, 'search']);
     Route::apiResource('/books', BookController::class);
     Route::get('/books/{book}/categories', [BookController::class, 'showCategories']);
     Route::post('/books/{book}/categories', [BookController::class, 'attachCategory']);

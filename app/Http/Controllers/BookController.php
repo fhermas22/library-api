@@ -111,6 +111,42 @@ class BookController extends Controller
     }
 
     /**
+     * Search a specified book by title or author.
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Verify if query is provided
+        if (empty($query)) {
+            return response()->json(
+                ['message' => "Veuillez fournir un mot-clé de recherche."],
+                400
+            );
+        }
+
+        // Search books by title or author
+        $books = Book::where(function ($q) use ($query) {
+            $q->where('title', 'LIKE', "%{$query}%")
+              ->orWhere('author', 'LIKE', "%{$query}%");
+        })->get();
+
+        // If no books found
+        if ($books->isEmpty()) {
+            return response()->json(
+                ['message' => "Aucun livre trouvé pour la recherche '$query'."],
+                404
+            );
+        }
+
+        // Response
+        return response()->json(
+            $books,
+            200
+        );
+    }
+
+    /**
      * Retrieve the list of categories attached to the specified book.
      */
     public function showCategories(Book $book)
