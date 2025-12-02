@@ -10,10 +10,24 @@ class BookController extends Controller
     /**
      * Display a listing of the books.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Get all books
-        $books = Book::all();
+        // Filter inputs
+        $sortBy = $request->input('sort_by');
+        $order = $request->input('order', 'asc');
+        // Pagination inputs
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1);
+
+        $query = Book::query();
+
+        // Apply the filters (title or author, order) and return corresponding books
+        if ($sortBy && in_array($sortBy, ['title', 'author', 'year'])) {
+            $query->orderBy($sortBy, $order);
+        }
+
+        // Get the books according to the number per page and the page index
+        $books = $query->paginate($perPage, ['*'], 'page', $page);
 
         // Response
         return response()->json(
