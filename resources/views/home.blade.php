@@ -514,12 +514,12 @@ Content-Type: application/json</code></pre>
             <div class="border-t border-slate-700 pt-8 mt-16">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="text-slate-400 text-sm mb-4 md:mb-0">
-                        © 2025 Library API • Créée par Hermas Francisco • Laravel 12
+                        © 2025 Library API • Créée par Hermas Francisco (@fhermas22) • Laravel 12
                     </div>
                     <div class="flex space-x-6">
-                        <a href="#" class="text-slate-400 hover:text-slate-200 transition text-sm">Documentation</a>
-                        <a href="#" class="text-slate-400 hover:text-slate-200 transition text-sm">GitHub</a>
-                        <a href="#" class="text-slate-400 hover:text-slate-200 transition text-sm">Support</a>
+                        <a href="https://github.com/fhermas22/library-api" class="text-slate-400 hover:text-slate-200 transition text-sm">Documentation</a>
+                        <a href="https://github.com/fhermas22/" class="text-slate-400 hover:text-slate-200 transition text-sm">GitHub</a>
+                        <a href="mailto:franciscohermas@gmail.com" class="text-slate-400 hover:text-slate-200 transition text-sm">Support</a>
                     </div>
                 </div>
             </div>
